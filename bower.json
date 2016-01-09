@@ -9,7 +9,9 @@
     "angular-route": "^1.4.0",
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
-    "sprintf": "~1.0.3"
+    "sprintf": "~1.0.3",
+    "three.js": "threejs#*",
+    "webvr-boilerplate": "~0.3.4"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

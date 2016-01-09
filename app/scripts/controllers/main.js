@@ -8,10 +8,13 @@
  * Controller of the thereminAngApp
  */
 angular.module('thereminAngApp')
-  .controller('MainCtrl',['$scope', 'thereminApp', function ($scope, thereminApp) {
+  .controller('MainCtrl',['$scope', 'thereminApp', 'monad', function ($scope, thereminApp, monad) {
     thereminApp.init();
 
     $scope.start = function () {
+      monad.init();
+      monad.mainLoop();
+      
       thereminApp.start();
     };
 

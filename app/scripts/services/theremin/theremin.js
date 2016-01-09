@@ -8,7 +8,7 @@
  * Service in the thereminAngApp.
  */
 angular.module('thereminAngApp')
-  .factory('theremin', [ function () {
+  .factory('theremin', [ function (monad) {
      var MAX_FREQ = 2500;
 
      var factory = function () {
@@ -19,6 +19,8 @@ angular.module('thereminAngApp')
     //context of the LeapMotion.
      factory.ctrlFrameHandler = function (frame) {
        var theremin_local = this;
+       //var monad_local = theremin_local.monad;
+       var monad_local = this.monad;
 
        var ctrlFrameHandler = function (frame) {
          if (frame.hands.length > 0) {
@@ -39,6 +41,10 @@ angular.module('thereminAngApp')
 
            theremin_local.baseFreq = newFreq;
 
+           //vt add
+           //theremin_local.monad.updateCircleRadius(newFreq / 10);
+           monad_local.updateCircleRadius(newFreq / 10);
+           //vt end
            document.getElementById('div_baseFreq').innerHTML = 'baseFreq: ' + sprintf("%4d", theremin_local.baseFreq);
 
            theremin_local.oscs.forEach(function (o) {
@@ -70,6 +76,11 @@ angular.module('thereminAngApp')
 
        var osc1 = this.createOscillator(1.0, this.baseFreq);
        this.oscs.push(osc1);
+       //vt add
+       this.monad = monad;
+       console.log('thermin.init: this.monad=', this.monad);
+       console.log('thermin.init: monad=', monad);
+       //vt end
      };
 
      factory.createOscillator = function(multiplier, freq) {
@@ -193,6 +204,11 @@ angular.module('thereminAngApp')
      };
 
      factory.start = function () {
+       console.log('thermin.start: monad=', monad);
+       this.monad = monad;
+       console.log('thermin.start: this.monad=', this.monad);
+       console.log('thermin.start: monad.doSomthing=', monad.doSomthing());
+
        for(var i = 0; i < this.oscs.length; i++) {
          var o = this.oscs[i].oscillator;
          var osc1 = this.createOscillator(this.oscs[i].multiplier, o.frequency || this.baseFreq);

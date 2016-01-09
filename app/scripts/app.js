@@ -29,6 +29,11 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/monad', {
+        templateUrl: 'views/monad.html',
+        controller: 'MonadCtrl',
+        controllerAs: 'monad'
+      })
       .otherwise({
         redirectTo: '/'
       });

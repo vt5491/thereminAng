@@ -30,6 +30,11 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/sprintf/src/sprintf.js',
+      'bower_components/three.js/build/three.js',
+      'bower_components/threejs/build/three.js',
+      'bower_components/webvr-polyfill/build/webvr-polyfill.js',
+      'bower_components/promise-polyfill/Promise.js',
+      'bower_components/webvr-boilerplate/build/webvr-manager.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
@@ -53,18 +58,24 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-      "PhantomJS"
+      //vt"PhantomJS"
+      "Firefox"
     ],
 
     // Which plugins to enable
     plugins: [
       "karma-phantomjs-launcher",
+      //vt add
+      "karma-firefox-launcher",
+      "karma-chrome-launcher",
+      //vt end
       "karma-jasmine"
     ],
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
     singleRun: false,
+    //singleRun: true,
 
     colors: true,
 
