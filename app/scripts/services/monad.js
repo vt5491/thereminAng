@@ -8,10 +8,11 @@
  * Service in the thereminAngApp.
  */
 angular.module('thereminAngApp')
-  .service('monad', function ( $window, geometry, monadUtils) {
+  .service('monad', function ( $window, monadBase, monadUtils) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var factory = {};
 
+    //console.log('monad: monadBase=', monadBase);
     factory.animationActive = true;
     factory.INIT_POSITION = new THREE.Vector3(0, 1.5, 2);
     factory.BasePosition = new THREE.Vector3();
@@ -154,7 +155,7 @@ angular.module('thereminAngApp')
       //this.circle.geometry.computeBoundingSphere(); 
       
       this.circle.quaternion.multiply(this.cubeQuat);
-      console.log('updateScene: this.circle.geometry.boundingSphere.radius=', this.circle.geometry.boundingSphere.radius);
+      //console.log('updateScene: this.circle.geometry.boundingSphere.radius=', this.circle.geometry.boundingSphere.radius);
       //vt end
     };
 

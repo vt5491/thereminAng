@@ -11,7 +11,7 @@
 // this is called by the MainCtrl controller.  It is a front-end to all the subclasses
 // of theremin.  Thus it serves as a sort of facade pattern
 angular.module('thereminAngApp')
-  .factory('thereminApp', [ 'standardTheremin', 'chromaticTheremin', 'majorTheremin', 'pentatonicTheremin', function (standardTheremin, chromaticTheremin, majorTheremin, pentatonicTheremin) {
+  .factory('thereminApp', [ 'standardTheremin', 'chromaticTheremin', 'majorTheremin', 'pentatonicTheremin', 'monad', function (standardTheremin, chromaticTheremin, majorTheremin, pentatonicTheremin, monad) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     var constr = [];
@@ -19,6 +19,8 @@ angular.module('thereminAngApp')
 
     
     constr.start = function () {
+      monad.init();
+      monad.mainLoop();
       theremin.start();
     };     
 
